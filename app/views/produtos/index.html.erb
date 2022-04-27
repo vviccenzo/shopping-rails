@@ -8,6 +8,7 @@
                     <td>Descrição</td>
                     <td>Preço</td>
                     <td>Quantidade</td>
+                    <td colspan="1"></td>
                 </tr>
             </thead>
             <tbody>
@@ -17,6 +18,7 @@
                     <td><%= produto.descricao %></td>
                     <td><%= produto.preco %></td>
                     <td><%= produto.quantidade %></td>
+                    <td><%= link_to "Remover", produto, method: :delete%></td>
                 </tr>
                 <% end %>
             </tbody>

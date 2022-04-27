@@ -15,6 +15,12 @@ class ProdutosController < ApplicationController
         #Cria um novo produto com os dados do arquivo e salva no banco de dados
         Produto.create produto
         #Redireciona para a página de produtos
-        redirect_to root_path
+        redirect_to root_url
+    end
+
+    def destroy
+        id = params[:id]
+        Produto.destroy id
+        redirect_to root_url
     end
 end
