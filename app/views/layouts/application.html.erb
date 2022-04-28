@@ -7,15 +7,22 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+          <%# Quando não temos um objeto vinculado a por exemplo text_field, que em um formulário seria
+          form.text_field, adicionamos tag no final ficando apenas text_field_tag. %>
   <body>
     <%= nav_bar brand: "Loja", brand_link: root_url do %>
       <%= menu_group do %>
-        <%= menu_item "Criar novo produto", produtos_new_path %>
-        <% end %>
+        <%= menu_item "Criar novo produto", new_produto_path %>
       <% end %>
-    <div class="container">
-      <%= yield %>
-    </div> 
+      <%= form_tag busca_produto_path, method: :get, class:"navbar-form navbar-right" do %>
+      <div class="form-group">
+        <%= text_field_tag :nome, @nome, class:"form-control" %>
+        <%= button_to "Buscar", nil, class:"btn btn-default" %>
+      </div>
+    <% end %>
+  <% end %>
+      <div class="container">
+        <%= yield %>
+      </div>
   </body>
 </html>

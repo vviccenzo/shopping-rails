@@ -18,7 +18,10 @@
                     <td><%= produto.descricao %></td>
                     <td><%= produto.preco %></td>
                     <td><%= produto.quantidade %></td>
-                    <td><%= link_to "Remover", produto, method: :delete%></td>
+                    <%# Utilizamos a propriedade "data" para perguntar se a pessoa tem certeza
+                    da ação de deletar o produto? %>
+                    <td><%= button_to "Remover", produto, method: :delete, class: "btn btn-danger",
+                    data: {confirm:"Tem certeza que quer deletar #{produto.nome}?"}%></td>
                 </tr>
                 <% end %>
             </tbody>
