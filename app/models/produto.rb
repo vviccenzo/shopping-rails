@@ -1,4 +1,8 @@
 class Produto < ApplicationRecord
+    #Um produto pertence a setor
+    belongs_to :setor
+
+
     validates :preco, presence: true
     validates :nome, presence: true, length: { minimum: 3}
     #Se a descrição possui uma quantidade entre 5 caracteres e 200

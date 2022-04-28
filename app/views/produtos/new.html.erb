@@ -27,6 +27,20 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <%= form.label :setor%>
+                <%# #collection_select espera 4 parametros:
+                #1 - Nome do campo que vai ser populado = :setor_id
+                #2 - Nomes do campo que irão ser exibidos = @setor
+                #3 - Nome do campo da tabela = :id
+                #4 - Nome do campo que vai ser exibido = :nome %> 
+                <%= form.collection_select :setor_id, @setores, :id, :nome, {}, class: "form-control"%>
+            </div>
+        </div>
+    </div>
+
 
     <div class="row">
         <div class="col-sm-2">

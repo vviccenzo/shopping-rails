@@ -11,7 +11,8 @@ class ProdutosController < ApplicationController
 
     #Função que sempre que entrar na página irá setar um novo produto
     def new
-        @produto = Produto.new  
+        @produto = Produto.new
+        @setores = Setor.all  
     end
 
     def create
