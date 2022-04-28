@@ -21,20 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-            <% @produtos.each do |produto| %>
-                <tr>
-                    <td><%= produto.nome %></td>
-                    <td><%= produto.descricao %></td>
-                    <td><%= produto.preco %></td>
-                    <td><%= produto.quantidade %></td>
-                    <td><%= produto.setor.nome %></td>
-                    <%# Utilizamos a propriedade "data" para perguntar se a pessoa tem certeza
-                    da ação de deletar o produto? %>
-                    <td><%= link_to "Editar", edit_produto_path(produto), class:"btn btn-primary"%></td>
-                    <td><%= button_to "Remover", produto, method: :delete, class: "btn btn-danger",
-                    data: {confirm:"Tem certeza que quer deletar #{produto.nome}?"}%></td>
-                </tr>
-                <% end %>
+                <%= render @produtos %>
             </tbody>
         </table>
         <div class="alert alert-danger" role="alert">
@@ -47,17 +34,11 @@
                     <td>Descrição</td>
                     <td>Preço</td>
                     <td>Quantidade</td>
+                    <td>Setor</td>
                 </tr>
             </thead>
             <tbody>
-            <% @produto_menor_preco.each do |produto| %>
-                <tr>
-                    <td><%= produto.nome %></td>
-                    <td><%= produto.descricao %></td>
-                    <td><%= produto.preco %></td>
-                    <td><%= produto.quantidade %></td>
-                </tr>
-                <% end %>
+                <%= render @produto_menor_preco%>
             </tbody>
         </table>
     </div>

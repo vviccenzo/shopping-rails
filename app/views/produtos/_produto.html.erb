@@ -1,0 +1,12 @@
+<tr>
+    <td><%= produto.nome %></td>
+    <td><%= produto.descricao %></td>
+    <td><%= produto.setor.nome %></td>
+    <td><%= produto.preco %></td>
+    <td><%= produto.quantidade %></td>
+    <%# Utilizamos a propriedade "data" para perguntar se a pessoa tem certeza
+    da ação de deletar o produto? %>
+    <td><%= link_to "Editar", edit_produto_path(produto), class:"btn btn-default"%></td>
+    <td><%= button_to "Remover", produto, method: :delete, class: "btn btn-danger",
+    data: {confirm:"Tem certeza que quer deletar #{produto.nome}?"}%></td>
+</tr>

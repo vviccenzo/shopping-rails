@@ -29,7 +29,7 @@ class ProdutosController < ApplicationController
             redirect_to root_url
         else
             #Redireciona novamente para a página de criação de produtos
-            renderize
+            renderize :new
         end
     end
 
@@ -44,7 +44,7 @@ class ProdutosController < ApplicationController
 
     def edit
         #Após receber os parametros do produto no before_action com a função set_produto, ele faz a ediçã
-        renderize
+        renderize :edit
     end
 
     def update
@@ -52,7 +52,7 @@ class ProdutosController < ApplicationController
             flash[:notice] = "Produto atualizado com sucesso!"
             redirect_to root_url
         else
-            renderize
+            renderize :edit
         end
     end
 
@@ -62,6 +62,7 @@ class ProdutosController < ApplicationController
         redirect_to root_url
     end
 
+    private
     #Função que recebe os parametros do arquivo e retorna um hash
     def produto_params
         #Recebe os parametros do arquivo
@@ -77,8 +78,9 @@ class ProdutosController < ApplicationController
 
 
     #Função que renderiza a página de criação de produtos
-    def renderize
+    def renderize(view)
         @setores = Setor.all
-        render :new
+        render view
     end
+
 end

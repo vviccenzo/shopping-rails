@@ -1,0 +1,63 @@
+<%# #Vai buscar todas as messagens de erro e renderizar uma por uma. %>
+<% @produto.errors.full_messages.each do |msg| %>
+    <div class="alert alert-danger" role="alert">
+    <%# #Vai renderizar as mensagens %>
+        <%= msg %>
+    </div>
+<% end %>
+
+<%= form_for @produto do |form| %>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <%= form.label :nome %>
+                <%# Para código em Ruby, caso queira inserir uma classe de bootstrap, utilizar "class:"
+                Em código HTML, utilizando "class=" %>
+                <%= form.text_field :nome , class:"form-control"%>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <%= form.label :descricao%>
+                <%= form.text_area :descricao, class:"form-control", rows:4%>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <%= form.label :setor%>
+                <%# #collection_select espera 4 parametros:
+                #1 - Nome do campo que vai ser populado = :setor_id
+                #2 - Nomes do campo que irão ser exibidos = @setor
+                #3 - Nome do campo da tabela = :id
+                #4 - Nome do campo que vai ser exibido = :nome %> 
+                <%= form.collection_select :setor_id, @setores, :id, :nome, {}, class: "form-control"%>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group">
+                <%= form.label :preco %>
+                <%= form.number_field :preco, step:0.01, class:"form-control"%>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1">
+            <div class="form-group">
+                <%= form.label :quantidade %>
+                <%= form.number_field :quantidade, class:"form-control"%>
+            </div>
+        </div>
+    </div>
+    <%= form.submit texto_da_acao, class:"btn btn-primary"%>
+<% end %>
