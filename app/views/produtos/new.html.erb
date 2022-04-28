@@ -1,4 +1,12 @@
-<%= form_for Produto.new do |form| %>
+<%# #Vai buscar todas as messagens de erro e renderizar uma por uma. %>
+<% @produto.errors.full_messages.each do |msg| %>
+    <div class="alert alert-danger" role="alert">
+    <%# #Vai renderizar as mensagens %>
+        <%= msg %>
+    </div>
+<% end %>
+
+<%= form_for @produto do |form| %>
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">

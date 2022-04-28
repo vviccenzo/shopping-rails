@@ -1,3 +1,11 @@
+<%# #Se existir uma mensagem de erro/sucesso, será renderizada a mensagem de erro/sucesso. %>
+<% if flash[:notice] %>
+    <div class="alert alert-success">
+    <%# #Vai renderizar a mensagem de sucesso. %>
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+
 <div class="alert alert-success">
     <h4 class="alert-heading">Produtos adicionados recentemente</h4>
 </div>

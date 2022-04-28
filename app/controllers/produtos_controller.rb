@@ -9,13 +9,25 @@ class ProdutosController < ApplicationController
         @produto_menor_preco = Produto.order(:preco).limit 1
     end
 
+    #Função que sempre que entrar na página irá setar um novo produto
+    def new
+        @produto = Produto.new  
+    end
+
     def create
         #Recebe os dados do novo arquivo e insere na variavel 'produto'
-        produto = params.require(:produto).permit(:nome, :descricao,:preco,:quantidade)
+        valores = params.require(:produto).permit(:nome, :descricao,:preco,:quantidade)
         #Cria um novo produto com os dados do arquivo e salva no banco de dados
-        Produto.create produto
-        #Redireciona para a página de produtos
-        redirect_to root_url
+        @produto = Produto.new valores
+        if @produto.save
+            #Se salvar com sucesso, renderiza uma mensagem de sucesso
+            flash[:notice] = "Produto salvo com sucesso!"
+            #Redireciona para a página de produtos
+            redirect_to root_url
+        else
+            #Redireciona novamente para a página de criação de produtos
+            render :new
+        end
     end
 
     def busca
