@@ -12,9 +12,9 @@
   <tbody>
     <% @departamentos.each do |departamento| %>
       <tr>
-        <td><%= link_to 'Show', departamento %></td>
-        <td><%= link_to 'Edit', edit_departamento_path(departamento) %></td>
-        <td><%= link_to 'Destroy', departamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Produtos', departamento %></td>
+        <td><%= link_to 'Editar', edit_departamento_path(departamento) %></td>
+        <td><%= link_to 'Deletar', departamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

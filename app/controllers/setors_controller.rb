@@ -8,6 +8,7 @@ class SetorsController < ApplicationController
 
   # GET /setors/1 or /setors/1.json
   def show
+    @produtos_por_setor = Produto.where("setor_id = ?", params[:id])
   end
 
   # GET /setors/new
