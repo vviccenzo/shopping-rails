@@ -12,12 +12,12 @@ class ProdutosController < ApplicationController
     #Função que sempre que entrar na página irá setar um novo produto
     def new
         @produto = Produto.new
-        @setores = Setor.all  
+        @setores = Setor.all  #Para exibir os setores no select
     end
 
     def create
         #Recebe os dados do novo arquivo e insere na variavel 'produto'
-        valores = params.require(:produto).permit(:nome, :descricao,:preco,:quantidade)
+        valores = params.require(:produto).permit(:nome, :descricao,:preco,:quantidade, :setor_id)
         #Cria um novo produto com os dados do arquivo e salva no banco de dados
         @produto = Produto.new valores
         if @produto.save
@@ -38,6 +38,25 @@ class ProdutosController < ApplicationController
         #Instancia o produtos como uma variavel global e passa a Query where com o nome
         #"nome like?" para indicar que o nome deve ser buscado como parte do nome e evitar SQL Injection
         @produtos = Produto.where "nome like ?", "%#{@nome}%"
+    end
+
+    def edit
+        id = params[:id]
+        @produto = Produto.find(id)
+        @setores = Setor.all
+        render :new
+    end
+
+    def update
+        id = params[:id]
+        @produto = Produto.find(id)
+        valores = params.require(:produto).permit(:nome, :descricao,:preco,:quantidade, :setor_id)
+        if @produto.update valores
+            flash[:notice] = "Produto atualizado com sucesso!"
+            redirect_to root_url
+        else
+            render :new
+        end
     end
 
     def destroy

@@ -1,6 +1,6 @@
 class Produto < ApplicationRecord
     #Um produto pertence a setor
-    belongs_to :setor
+    belongs_to :setor, optional: true
 
 
     validates :preco, presence: true
